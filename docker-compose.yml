@@ -72,8 +72,9 @@ services:
       MICRO_BROKER: "nats"
       MICRO_BROKER_ADDRESS: "nats:4222"
       MICRO_ADDRESS: ":8080"
+      CORS_ALLOWED_HEADERS: "X-Custom-Header"
       CORS_ALLOWED_ORIGINS: "*"
-      CORS_ALLOWED_METHODS: "OPTIONS, POST"
+      CORS_ALLOWED_METHODS: "POST"
 
   datastore:
     container_name: datastore
