@@ -5,9 +5,12 @@ build:
 		cd user-service && $(MAKE) build 
 		cd user-cli && $(MAKE) build 
 		cd email-service && $(MAKE) build 
+		cd api-getway && $(MAKE) build 
 		docker-compose build
 		docker-compose up -d
-
+		git add --all
+		git diff-index --quiet HEAD || git commit -a -m 'fix'
+		git push origin master
 api:
 		docker-compose run -p 8080:8080 -e MICRO_REGISTRY=mdns micro api --handler=rpc --address=:8080 --namespace=go.micro.srv
 

@@ -61,14 +61,14 @@ services:
       MICRO_BROKER: "nats"
       MICRO_BROKER_ADDRESS: "nats:4222"
 
-  micro:
-    container_name: micro
-    image: microhq/micro
+  api-getway:
+    container_name: api-getway
+    build: ./api-getway
     ports:
       - 8080:8080
     environment:
       MICRO_REGISTRY: "mdns"
-      MICRO_API_HANDLER: "event"
+      MICRO_API_HANDLER: "rpc"
       MICRO_BROKER: "nats"
       MICRO_BROKER_ADDRESS: "nats:4222"
       MICRO_ADDRESS: ":8080"
