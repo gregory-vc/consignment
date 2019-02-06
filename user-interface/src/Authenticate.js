@@ -35,6 +35,7 @@ class Authenticate extends React.Component {
         token: res.token,
         authenticated: true,
       });
+      localStorage.setItem('token', res.token);
     })
     .catch(err => this.setState({ err, authenticated: false, }));
   }

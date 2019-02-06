@@ -20,10 +20,11 @@ class CreateConsignment extends React.Component {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Token': localStorage.getItem('token'),
       },
       body: JSON.stringify({
-        service: 'shippy.consignment',
-        method: 'ConsignmentService.Get',
+        service: 'go.micro.srv.consignment',
+        method: 'ShippingService.GetConsignments',
         request: {},
       })
     })
@@ -41,10 +42,11 @@ class CreateConsignment extends React.Component {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Token': localStorage.getItem('token'),
       },
       body: JSON.stringify({
-        service: 'shippy.consignment',
-        method: 'ConsignmentService.Create',
+        service: 'go.micro.srv.consignment',
+        method: 'ShippingService.CreateConsignment',
         request: _.omit(consignment, 'created', 'consignments'),
       }),
     })
