@@ -1,9 +1,9 @@
 build:
 		cd vessel-service && $(MAKE) build 
 		cd consignment-service && $(MAKE) build 
-		cd consignment-cli && $(MAKE) build 
+		# cd consignment-cli && $(MAKE) build 
 		cd user-service && $(MAKE) build 
-		cd user-cli && $(MAKE) build 
+		# cd user-cli && $(MAKE) build 
 		cd email-service && $(MAKE) build 
 		cd api-getway && $(MAKE) build 
 		docker-compose build
