@@ -1,3 +1,9 @@
+up:
+	cd terraform && terraform apply
+
+down:
+	cd terraform && terraform destroy
+
 build:
 		cd vessel-service && $(MAKE) build 
 		cd consignment-service && $(MAKE) build 

@@ -1,48 +1,28 @@
-apiVersion: apps/v1beta1
-kind: StatefulSet
+apiVersion: v1
+kind: ReplicationController
 metadata:
-  name: mongo
+  labels:
+    name: mongo
+  name: mongo-controller
 spec:
-  serviceName: "mongo"
-  replicas: 3
-  selector:
-    matchLabels:
-      app: mongo
+  replicas: 1
   template:
     metadata:
       labels:
-        app: mongo
-        role: mongo
+        name: mongo
     spec:
-      terminationGracePeriodSeconds: 10
       containers:
+      - image: mongo
+        name: mongo
+        ports:
         - name: mongo
-          image: mongo
-          command:
-            - mongod
-            - "--replSet"
-            - rs0
-            - "--smallfiles"
-            - "--noprealloc"
-            - "--bind_ip"
-            - "0.0.0.0"
-          ports:
-            - containerPort: 27017
-          volumeMounts:
+          containerPort: 27017
+          hostPort: 27017
+        volumeMounts:
             - name: mongo-persistent-storage
               mountPath: /data/db
-        - name: mongo-sidecar
-          image: cvallance/mongo-k8s-sidecar
-          env:
-            - name: MONGO_SIDECAR_POD_LABELS
-              value: "role=mongo,environment=test"
-  volumeClaimTemplates:
-  - metadata:
-      name: mongo-persistent-storage
-      annotations:
-        volume.beta.kubernetes.io/storage-class: "fast"
-    spec:
-      accessModes: [ "ReadWriteOnce" ]
-      resources:
-        requests:
-          storage: 10Gi
+      volumes:
+        - name: mongo-persistent-storage
+          gcePersistentDisk:
+            pdName: mongo-disk
+            fsType: ext4
