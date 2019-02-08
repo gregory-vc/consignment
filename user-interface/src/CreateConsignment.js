@@ -16,7 +16,7 @@ class CreateConsignment extends React.Component {
   }
 
   componentWillMount() {
-    fetch(`http://localhost:8080/rpc`, {
+    fetch(`http://35.246.82.247/rpc`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ class CreateConsignment extends React.Component {
 
   create = () => {
     const consignment = this.state;
-    fetch(`http://localhost:8080/rpc`, {
+    fetch(`http://35.246.82.247/rpc`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
