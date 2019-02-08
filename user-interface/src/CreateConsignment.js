@@ -23,7 +23,7 @@ class CreateConsignment extends React.Component {
         'Token': localStorage.getItem('token'),
       },
       body: JSON.stringify({
-        service: 'go.micro.srv.consignment',
+        service: 'consignment',
         method: 'ShippingService.GetConsignments',
         request: {},
       })
@@ -45,7 +45,7 @@ class CreateConsignment extends React.Component {
         'Token': localStorage.getItem('token'),
       },
       body: JSON.stringify({
-        service: 'go.micro.srv.consignment',
+        service: 'consignment',
         method: 'ShippingService.CreateConsignment',
         request: _.omit(consignment, 'created', 'consignments'),
       }),

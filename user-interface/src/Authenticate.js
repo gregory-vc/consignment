@@ -24,7 +24,7 @@ class Authenticate extends React.Component {
           email: this.state.email,
           password: this.state.password,
         },
-        service: 'go.micro.srv.user',
+        service: 'user',
         method: 'UserService.Auth',
       }),
     })
@@ -53,7 +53,7 @@ class Authenticate extends React.Component {
           name: this.state.name,
         },
         method: 'UserService.Create',
-        service: 'go.micro.srv.user',
+        service: 'user',
       }),
     })
     .then((res) => res.json())

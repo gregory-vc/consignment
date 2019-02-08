@@ -17,6 +17,18 @@ build:
 		git add --all
 		git diff-index --quiet HEAD || git commit -a -m 'fix'
 		git push origin master
+
+deploy: 
+		cd vessel-service && $(MAKE) deploy 
+		cd consignment-service && $(MAKE) deploy 
+		cd user-service && $(MAKE) deploy 
+		cd email-service && $(MAKE) deploy 
+		cd api-getway && $(MAKE) deploy 
+		cd user-interface && $(MAKE) deploy 
+		git add --all
+		git diff-index --quiet HEAD || git commit -a -m 'fix'
+		git push origin master
+
 api:
 		docker-compose run -p 8080:8080 -e MICRO_REGISTRY=mdns micro api --handler=rpc --address=:8080 --namespace=go.micro.srv
 

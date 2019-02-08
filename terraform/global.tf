@@ -56,7 +56,7 @@ resource "google_container_cluster" "shippy-freight-cluster" {
 
     # Defines the type/size instance to use
     # Standard is a sensible starting point
-    machine_type = "n1-standard-2"
+    machine_type = "n1-standard-4"
 
     # Grants OAuth access to the following API's within the cluster
     oauth_scopes = [
