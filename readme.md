@@ -1,5 +1,6 @@
 gcloud compute disks create --size=20GB --type=pd-ssd postgres-disk
 gcloud compute disks create --size=20GB --type=pd-ssd mongo-disk
+
 kubectl create clusterrolebinding cluster-admin-binding \
   --clusterrole=cluster-admin --user=$(gcloud config get-value core/account)
 
@@ -17,3 +18,9 @@ kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | gre
 
 minikube addons configure registry-creds
 minikube addons enable registry-creds
+
+kubectl config use-context gke_my-project-tattoor_europe-west2-a_shippy-freight-cluster
+kubectl config use-context minikube
+
+kubectl port-forward mongo-controller-bfmkm 27018:27017
+kubectl port-forward postgres-controller-jr8tg 5432:5432
