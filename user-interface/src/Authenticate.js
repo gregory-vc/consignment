@@ -14,7 +14,7 @@ class Authenticate extends React.Component {
   }
 
   login = () => {
-    fetch(`http://35.246.82.247/rpc`, {
+    fetch(`/rpc`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ class Authenticate extends React.Component {
   }
 
   signup = () => {
-    fetch(`http://35.246.82.247/rpc`, {
+    fetch(`/rpc`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
