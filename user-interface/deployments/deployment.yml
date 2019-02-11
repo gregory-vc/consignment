@@ -18,7 +18,7 @@ spec:
           imagePullPolicy: Always
           env:
           - name: UPDATED_AT
-            value: "Пн фев 11 17:19:13 MSK 2019"
+            value: "Пн фев 11 17:27:24 MSK 2019"
           ports:
           - containerPort: 80
             name: ui
